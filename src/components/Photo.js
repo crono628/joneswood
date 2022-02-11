@@ -7,7 +7,11 @@ class Photo extends Component {
   render() {
     return (
       <div className={this.props.className}>
-        <img className="photo" src={this.props.src} href={this.props.href} />
+        <img
+          className="img-responsive"
+          src={this.props.src}
+          href={this.props.href}
+        />
       </div>
     );
   }
