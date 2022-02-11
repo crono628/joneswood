@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/joneswood/static/css/main.34396f97.css",
+    "main.js": "/joneswood/static/js/main.70ad8150.js",
+    "index.html": "/joneswood/index.html",
+    "main.34396f97.css.map": "/joneswood/static/css/main.34396f97.css.map",
+    "main.70ad8150.js.map": "/joneswood/static/js/main.70ad8150.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.34396f97.css",
+    "static/js/main.70ad8150.js"
+  ]
+}
