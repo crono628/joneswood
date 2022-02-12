@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/joneswood/static/css/main.60c8712b.css",
-    "main.js": "/joneswood/static/js/main.02963872.js",
+    "main.css": "/joneswood/static/css/main.57423011.css",
+    "main.js": "/joneswood/static/js/main.b6e34330.js",
     "static/media/IMG_1968.jpeg": "/joneswood/static/media/IMG_1968.d22e74abde94001d045b.jpeg",
     "static/media/IMG_1956.jpeg": "/joneswood/static/media/IMG_1956.4fdee2f8e3712a1d8e2f.jpeg",
     "static/media/IMG_1972.jpeg": "/joneswood/static/media/IMG_1972.91e6eb8a3c5dc3187cb8.jpeg",
     "static/media/IMG_1819.jpeg": "/joneswood/static/media/IMG_1819.7829c2a1b9b4185923c5.jpeg",
     "static/media/IMG_1974.jpeg": "/joneswood/static/media/IMG_1974.7e8cdb387864284f8a3b.jpeg",
     "index.html": "/joneswood/index.html",
-    "main.60c8712b.css.map": "/joneswood/static/css/main.60c8712b.css.map",
-    "main.02963872.js.map": "/joneswood/static/js/main.02963872.js.map"
+    "main.57423011.css.map": "/joneswood/static/css/main.57423011.css.map",
+    "main.b6e34330.js.map": "/joneswood/static/js/main.b6e34330.js.map"
   },
   "entrypoints": [
-    "static/css/main.60c8712b.css",
-    "static/js/main.02963872.js"
+    "static/css/main.57423011.css",
+    "static/js/main.b6e34330.js"
   ]
 }
