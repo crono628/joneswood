@@ -7,8 +7,12 @@ class Carousel extends Component {
 
   render() {
     return (
-      <div>
-        <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
+      <div className="mx-auto">
+        <div
+          id="myCarousel"
+          className="carousel slide mx-auto"
+          data-bs-ride="carousel"
+        >
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img

@@ -1,5 +1,16 @@
 #joneswood {
   color: rgb(0, 182, 182);
   font-size: xx-large;
+  font-weight: bolder;
   font-family: 'Bad Script', cursive;
+}
+
+#myCarousel {
+  max-width: 800px;
+  scroll-margin-top: 80px;
+}
+
+#myAbout {
+  max-width: 350px;
+  scroll-margin-top: 80px;
 }

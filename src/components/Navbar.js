@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 class Navbar extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a id="joneswood" class="navbar-brand" href="#">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+        <div className="container-fluid">
+          <a id="joneswood" className="navbar-brand" href="#">
             Joneswood
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -17,23 +17,27 @@ class Navbar extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Features
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#carousel"
+                >
+                  Featured
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Contact
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li className="nav-item">
+                <a className="nav-link" href="#myAbout">
                   About
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#myContact">
+                  Contact
                 </a>
               </li>
             </ul>
