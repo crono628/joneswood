@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
 #joneswood {
   color: rgb(0, 182, 182);
   font-size: xx-large;
@@ -13,4 +24,11 @@
 #myAbout {
   max-width: 350px;
   scroll-margin-top: 80px;
+}
+
+.mdev {
+  font-size: 10px;
+  margin-top: 150px;
+  text-decoration: none;
+  color: inherit;
 }
