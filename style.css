@@ -19,7 +19,6 @@ html {
 #myCarousel {
   max-width: 800px;
   scroll-margin-top: 80px;
-  padding: 40px;
 }
 
 #myAbout {
@@ -30,8 +29,6 @@ html {
 .mdev {
   font-size: 10px;
   margin-top: 150px;
-  text-decoration: none;
-  color: inherit;
 }
 
 .wood-blurb {
