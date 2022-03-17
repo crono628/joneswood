@@ -19,6 +19,7 @@ html {
 #myCarousel {
   max-width: 800px;
   scroll-margin-top: 80px;
+  padding: 40px;
 }
 
 #myAbout {
@@ -31,4 +32,37 @@ html {
   margin-top: 150px;
   text-decoration: none;
   color: inherit;
+}
+
+.wood-blurb {
+  margin-bottom: 250px;
+}
+
+.tracking-in-expand {
+  animation: tracking-in-expand 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
 }
