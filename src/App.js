@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import TopNav from './components/TopNav';
+import Carousel from './components/Carousel';
+import About from './components/About';
+import Trees from './components/Trees';
+import { Routes, Route, Redirect } from 'react-router-dom';
 
-function App() {
+import './index.css';
+
+const App = () => {
+  const appStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-fluid">
+      <TopNav />
+
+      <div className="d-flex flex-column align-items-center">
+        <Routes>
+          <Route path="/" element={<Carousel />}>
+            <Route path="about" element={<About />} />
+          </Route>
+          <Route path="joneswood" element={<Carousel />} />
+          <Route path="trees" element={<Trees />} />
+        </Routes>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
