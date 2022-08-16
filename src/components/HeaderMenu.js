@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Box } from '@mui/material';
 
 export default function HeaderMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -16,8 +14,8 @@ export default function HeaderMenu() {
 
   return (
     <div>
-      <Box
-        className="title"
+      <div
+        className="title-name"
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
@@ -25,10 +23,9 @@ export default function HeaderMenu() {
         onClick={handleClick}
         color="white"
         padding={2}
-        sx={{ cursor: 'pointer', fontSize: '1.5rem' }}
       >
         Joneswood Collective
-      </Box>
+      </div>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
