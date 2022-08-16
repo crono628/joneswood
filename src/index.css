@@ -26,6 +26,10 @@ html {
   width: fit-content;
 }
 
+.header {
+  padding: 1rem;
+}
+
 .splash-screen {
   display: flex;
   flex-direction: column;
