@@ -1,9 +1,14 @@
-import { Button } from '@mui/material';
+import { IconButton } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
 const Carousel = () => {
   const [displayIndex, setDisplayIndex] = useState(0);
   const [isActive, setIsActive] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -22,40 +27,84 @@ const Carousel = () => {
 
   const handleForward = () => {
     displayIndex + 1 > itemData.length - 1
-      ? setDisplayIndex((prev) => (prev = 0))
+      ? setDisplayIndex(0)
       : setDisplayIndex((prev) => prev + 1);
   };
   const handleBackward = () => {
     displayIndex - 1 < 0
-      ? setDisplayIndex((prev) => (prev = itemData.length - 1))
+      ? setDisplayIndex(itemData.length - 1)
       : setDisplayIndex((prev) => prev - 1);
   };
 
   return (
     <div
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      style={{
+        height: '450px',
+        minWidth: '50vw',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
     >
       {itemData.map((item, index) => (
-        <img
-          id={index}
-          style={{ height: '450px', position: 'absolute' }}
+        <div
           key={index}
-          src={item.img}
-          className={index === displayIndex ? 'fade-in' : 'fade-out'}
-        />
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'absolute',
+          }}
+        >
+          <img
+            id={index}
+            style={{
+              height: '450px',
+              position: 'relative',
+              display:
+                displayIndex === index
+                  ? 'block'
+                  : setTimeout(() => 'none', 1000),
+            }}
+            src={item.img}
+            className={`carousel-img ${
+              index === displayIndex ? 'fade-in' : 'fade-out'
+            }`}
+            onLoad={() => setLoaded(true)}
+          />
+          {loaded && displayIndex === index && (
+            <div style={{ zIndex: 3 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  position: 'absolute',
+                  top: '43%',
+                  width: '100%',
+                }}
+              >
+                <IconButton onClick={handleBackward}>
+                  <NavigateBeforeIcon
+                    fontSize="large"
+                    sx={{ color: 'white' }}
+                  />
+                </IconButton>
+                <IconButton onClick={handleForward} sx={{ color: 'white' }}>
+                  <NavigateNextIcon fontSize="large" />
+                </IconButton>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <IconButton onClick={() => setIsActive((prev) => !prev)}>
+                  {isActive ? (
+                    <PauseIcon fontSize="small" sx={{ color: 'white' }} />
+                  ) : (
+                    <PlayArrowIcon fontSize="small" sx={{ color: 'white' }} />
+                  )}
+                </IconButton>
+              </div>
+            </div>
+          )}
+        </div>
       ))}
-      {/* <img
-        ref={imgRef}
-        style={{ height: '450px' }}
-        src={`${itemData[index].img}`}
-      /> */}
-      <div>
-        <Button onClick={handleBackward}>{'⏪'}</Button>
-        <Button onClick={() => setIsActive((prev) => !prev)}>
-          {isActive ? '⏸' : '▶️'}
-        </Button>{' '}
-        <Button onClick={handleForward}>{'⏩'}</Button>
-      </div>
     </div>
   );
 };

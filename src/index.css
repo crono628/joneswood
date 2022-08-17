@@ -9,7 +9,10 @@
 }
 
 html {
+  color: paleturquoise;
   background-color: #212529;
+  /* background-color: black;
+  color: white; */
 }
 
 .app-container {
@@ -21,7 +24,7 @@ html {
 
 .title-name {
   cursor: pointer;
-  color: paleturquoise;
+  /* color: paleturquoise; */
   margin-bottom: 3rem;
   width: fit-content;
 }
@@ -38,7 +41,7 @@ html {
   width: 100%;
   height: 100%;
   margin-bottom: 3rem;
-  color: paleturquoise;
+  /* color: paleturquoise; */
 }
 
 .splash-screen p {
@@ -82,9 +85,9 @@ html {
   animation: fade-out 1s ease-out both;
 }
 
-/* img {
+.carousel-img {
   display: none;
-} */
+}
 
 @-webkit-keyframes fade-in {
   0% {
