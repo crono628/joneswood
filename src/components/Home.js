@@ -1,5 +1,5 @@
 import React from 'react';
-import MasonryImageList from './MasonryImageList';
+import Carousel from './Carousel';
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
         <p>Artisanal.</p>
         <p>Local.</p>
       </div>
-      <MasonryImageList />
+      <Carousel />
     </div>
   );
 };

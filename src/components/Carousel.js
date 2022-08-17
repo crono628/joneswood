@@ -1,25 +1,66 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import { Button } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
-export default function MasonryImageList() {
+const Carousel = () => {
+  const [displayIndex, setDisplayIndex] = useState(0);
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    let interval;
+    if (isActive) {
+      interval = setInterval(() => {
+        displayIndex + 1 > itemData.length - 1
+          ? setDisplayIndex((prev) => (prev = 0))
+          : setDisplayIndex((prev) => prev + 1);
+      }, 3500);
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [isActive, displayIndex]);
+
+  const handleForward = () => {
+    displayIndex + 1 > itemData.length - 1
+      ? setDisplayIndex((prev) => (prev = 0))
+      : setDisplayIndex((prev) => prev + 1);
+  };
+  const handleBackward = () => {
+    displayIndex - 1 < 0
+      ? setDisplayIndex((prev) => (prev = itemData.length - 1))
+      : setDisplayIndex((prev) => prev - 1);
+  };
+
   return (
-    <Box sx={{ width: '100%', height: '100%', overflowY: 'scroll' }}>
-      <ImageList variant="masonry" cols={3} gap={10}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
-            <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              loading="lazy"
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-    </Box>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+    >
+      {itemData.map((item, index) => (
+        <img
+          id={index}
+          style={{ height: '450px', position: 'absolute' }}
+          key={index}
+          src={item.img}
+          className={index === displayIndex ? 'fade-in' : 'fade-out'}
+        />
+      ))}
+      {/* <img
+        ref={imgRef}
+        style={{ height: '450px' }}
+        src={`${itemData[index].img}`}
+      /> */}
+      <div>
+        <Button onClick={handleBackward}>{'⏪'}</Button>
+        <Button onClick={() => setIsActive((prev) => !prev)}>
+          {isActive ? '⏸' : '▶️'}
+        </Button>{' '}
+        <Button onClick={handleForward}>{'⏩'}</Button>
+      </div>
+    </div>
   );
-}
+};
+
+export default Carousel;
 
 const itemData = [
   {
