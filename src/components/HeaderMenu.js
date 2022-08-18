@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function HeaderMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -21,17 +22,21 @@ export default function HeaderMenu() {
 
   return (
     <div className="header">
-      <div
-        className="title-name"
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        color="white"
-        padding={2}
-      >
-        Joneswood Collective
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ flex: 1 }} className="title-name">
+          Joneswood Collective
+        </div>
+        <div
+          className="title-name"
+          id="basic-button"
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+          color="white"
+        >
+          <MenuIcon />
+        </div>
       </div>
       <Menu
         id="basic-menu"
@@ -45,9 +50,6 @@ export default function HeaderMenu() {
         <MenuItem onClick={handleNavigate}>Home</MenuItem>
         <MenuItem value="trees" onClick={handleNavigate}>
           Trees
-        </MenuItem>
-        <MenuItem value="about" onClick={handleNavigate}>
-          About
         </MenuItem>
         <MenuItem value="contact" onClick={handleNavigate}>
           Contact
