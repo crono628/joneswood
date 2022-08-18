@@ -23,8 +23,29 @@ export default function HeaderMenu() {
   return (
     <div className="header">
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div style={{ flex: 1 }} className="title-name">
-          Joneswood Collective
+        <div
+          className="title-name"
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'start',
+            position: 'relative',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifySelf: 'start',
+              position: 'absolute',
+              left: '0',
+            }}
+          >
+            <div>JONESWOOD</div> <div>COLLECTIVE</div>
+          </div>
         </div>
         <div
           className="title-name"

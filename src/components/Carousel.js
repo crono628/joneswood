@@ -4,6 +4,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
+import { storage } from '../firebase';
 
 const Carousel = () => {
   const [displayIndex, setDisplayIndex] = useState(0);
@@ -95,9 +96,9 @@ const Carousel = () => {
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <IconButton onClick={() => setIsActive((prev) => !prev)}>
                   {isActive ? (
-                    <PauseIcon fontSize="small" sx={{ color: 'white' }} />
+                    <PauseIcon fontSize="small" sx={{ color: '#adc3c6' }} />
                   ) : (
-                    <PlayArrowIcon fontSize="small" sx={{ color: 'white' }} />
+                    <PlayArrowIcon fontSize="small" sx={{ color: '#adc3c6' }} />
                   )}
                 </IconButton>
               </div>

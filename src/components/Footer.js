@@ -7,7 +7,7 @@ const Footer = () => {
     <div
       style={{
         padding: '7px',
-        backgroundColor: 'lightgray',
+        backgroundColor: '#adc3c6',
         position: 'fixed',
         bottom: '0',
         fontSize: '0.7rem',
@@ -23,7 +23,14 @@ const Footer = () => {
           alignItems: 'center',
         }}
       >
-        <div style={{ color: 'black' }}>Copyright © 2022 MD</div>
+        <a
+          href="https://michaelprograms.web.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: 'black', textDecoration: 'none' }}
+        >
+          © 2022 MD
+        </a>
         <div>
           <a
             href="https://michaelprograms.web.app/"
