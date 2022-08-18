@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "firebase deploy --only hosting:joneswood",
+    "deploy": "firebase deploy",
     "test": "react-scripts test"
   },
   "eslintConfig": {
