@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase/app';
+import { getApp, initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import { getStorage } from 'firebase/storage';
+import { getStorage, ref } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,6 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const storage = getStorage(app);
+const storage = getStorage();
+const compressedRef = ref(storage, 'joneswood');
 
-export { app, analytics, storage };
+export { app, analytics, storage, compressedRef };

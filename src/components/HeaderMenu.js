@@ -29,8 +29,7 @@ export default function HeaderMenu() {
             flex: 1,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'start',
+            alignItems: 'start',
             position: 'relative',
           }}
         >
@@ -40,21 +39,29 @@ export default function HeaderMenu() {
               flexDirection: 'column',
               alignItems: 'center',
               justifySelf: 'start',
+              width: 'min-content',
+              cursor: 'pointer',
               position: 'absolute',
-              left: '0',
             }}
+            onClick={() => navigate('/')}
           >
             <div>JONESWOOD</div> <div>COLLECTIVE</div>
           </div>
         </div>
         <div
-          className="title-name"
-          id="basic-button"
+          // className="title-name"
           aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
           color="white"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'end',
+            cursor: 'pointer',
+          }}
         >
           <MenuIcon />
         </div>

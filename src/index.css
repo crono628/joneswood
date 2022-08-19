@@ -25,15 +25,14 @@ html {
   flex-direction: column;
 }
 
-.title-name {
-  cursor: pointer;
-  /* color: paleturquoise; */
-  margin-bottom: 3rem;
-  width: fit-content;
-}
-
 .header {
   padding: 1rem;
+  top: 0;
+  width: 100%;
+  /* position: fixed; */
+  background-color: #dff6f9;
+  z-index: 8;
+  margin-bottom: 7rem;
 }
 
 .splash-screen {
@@ -44,7 +43,6 @@ html {
   width: 100%;
   height: 100%;
   margin-bottom: 3rem;
-  /* color: paleturquoise; */
 }
 
 .splash-screen > p {
@@ -61,7 +59,7 @@ html {
 }
 
 .home-container {
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   margin-bottom: 10rem;
 }
 
