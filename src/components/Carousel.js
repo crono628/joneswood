@@ -70,7 +70,7 @@ const Carousel = () => {
           <img
             id={index}
             style={{
-              height: '450px',
+              maxHeight: '550px',
               position: 'relative',
               display:
                 displayIndex === index
@@ -114,11 +114,12 @@ const Carousel = () => {
 };
 
 const divStyle = {
-  height: '450px',
+  height: '500px',
   minWidth: '50vw',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  marginTop: '100px',
 };
 
 const arrowStyle = {

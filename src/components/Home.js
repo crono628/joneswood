@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import React from 'react';
 import Carousel from './Carousel';
+// import MasonryImages from './MasonryImages';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         <p>Local.</p>
       </div>
       <Carousel />
+      {/* <MasonryImages /> */}
 
       <div className="blurb">
         <Typography maxWidth={'400px'} align={'center'}>

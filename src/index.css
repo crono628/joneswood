@@ -76,6 +76,10 @@ html {
   .tree-container div {
     max-width: 500px;
   }
+
+  .carousel-img {
+    max-width: 60vw;
+  }
 }
 
 /* Mobile view */
@@ -95,6 +99,10 @@ html {
 
   .tree-container div {
     max-width: 375px;
+  }
+
+  .carousel-img {
+    max-width: 90vw;
   }
 }
 
