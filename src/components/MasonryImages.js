@@ -13,18 +13,18 @@ const MasonryImages = () => {
     const getImages = async () => {
       try {
         const imageUrls = await listAll(compressedRef);
-        imageUrls.items.forEach(async (item) => {
-          const url = await getDownloadURL(item);
-          setImages((prev) => [...prev, url]);
+        let mappedUrls = imageUrls.items.map((item) => getDownloadURL(item));
+        Promise.all(mappedUrls).then((thing) => {
+          setImages(thing);
           setLoaded(true);
         });
       } catch (error) {
         console.log(error);
       }
     };
-
     getImages();
   }, []);
+
   return (
     <div className="masonry-width-container">
       <Box className="masonry-width" sx={{ overflowY: 'scroll' }}>
