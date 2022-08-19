@@ -27,17 +27,21 @@ const MasonryImages = () => {
 
   return (
     <div className="masonry-width-container">
-      <Box className="masonry-width" sx={{ overflowY: 'scroll' }}>
+      <Box
+        className="masonry-width"
+        sx={{ overflowY: 'scroll', scrollbarWidth: 'none' }}
+      >
         <ImageList variant="masonry" cols={3} gap={8}>
-          {images?.map((item, index) => (
-            <ImageListItem key={item + index}>
-              <img
-                src={`${item}?w=248&fit=crop&auto=format`}
-                srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
+          {loaded &&
+            images.map((item, index) => (
+              <ImageListItem key={item + index}>
+                <img
+                  src={`${item}?w=248&fit=crop&auto=format`}
+                  srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  loading="lazy"
+                />
+              </ImageListItem>
+            ))}
         </ImageList>
       </Box>
     </div>

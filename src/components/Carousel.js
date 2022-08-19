@@ -4,34 +4,16 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-import { compressedRef, storage } from '../firebase';
-import { getDownloadURL, listAll, ref } from 'firebase/storage';
+import { useImgContext } from '../Context';
 
 const Carousel = () => {
+  const { images, loading } = useImgContext();
   const [displayIndex, setDisplayIndex] = useState(0);
-  const [images, setImages] = useState([]);
   const [isActive, setIsActive] = useState(true);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const getImages = async () => {
-      try {
-        const imageUrls = await listAll(compressedRef);
-        let mappedUrls = imageUrls.items.map((item) => getDownloadURL(item));
-        Promise.all(mappedUrls).then((thing) => {
-          setImages(thing);
-          setLoaded(true);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getImages();
-  }, []);
 
   useEffect(() => {
     let interval;
-    if (isActive && loaded) {
+    if (isActive && !loading) {
       interval = setInterval(() => {
         displayIndex + 1 > images.length - 1
           ? setDisplayIndex((prev) => (prev = 0))
@@ -57,7 +39,7 @@ const Carousel = () => {
 
   return (
     <div style={divStyle}>
-      {loaded &&
+      {!loading &&
         images.map((item, index) => (
           <div
             key={index}
@@ -77,13 +59,12 @@ const Carousel = () => {
                     ? 'block'
                     : setTimeout(() => 'none', 1000),
               }}
-              // onLoad={() => setLoaded(true)}
               src={item}
               className={`carousel-img ${
                 index === displayIndex ? 'fade-in' : 'fade-out'
               }`}
             />
-            {loaded && displayIndex === index && (
+            {!loading && displayIndex === index && (
               <div style={{ zIndex: 3 }}>
                 <div style={arrowStyle}>
                   <IconButton onClick={handleBackward}>
