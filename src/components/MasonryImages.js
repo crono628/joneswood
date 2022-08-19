@@ -23,23 +23,24 @@ const MasonryImages = () => {
       }
     };
 
-    return () => getImages();
+    getImages();
   }, []);
   return (
-    <Box sx={{ width: 500, height: 450, overflowY: 'scroll' }}>
-      <ImageList variant="masonry" cols={3} gap={8}>
-        {images?.map((item) => (
-          <ImageListItem key={item.img}>
-            <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
-              loading="lazy"
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-    </Box>
+    <div className="masonry-width-container">
+      <Box className="masonry-width" sx={{ overflowY: 'scroll' }}>
+        <ImageList variant="masonry" cols={3} gap={8}>
+          {images?.map((item, index) => (
+            <ImageListItem key={item + index}>
+              <img
+                src={`${item}?w=248&fit=crop&auto=format`}
+                srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                loading="lazy"
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+      </Box>
+    </div>
   );
 };
 

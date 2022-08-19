@@ -17,22 +17,21 @@ const Carousel = () => {
     const getImages = async () => {
       try {
         const imageUrls = await listAll(compressedRef);
-        imageUrls.items.forEach(async (item) => {
-          const url = await getDownloadURL(item);
-          setImages((prev) => [...prev, url]);
+        let mappedUrls = imageUrls.items.map((item) => getDownloadURL(item));
+        Promise.all(mappedUrls).then((thing) => {
+          setImages(thing);
           setLoaded(true);
         });
       } catch (error) {
         console.log(error);
       }
     };
-
-    return () => getImages();
+    getImages();
   }, []);
 
   useEffect(() => {
     let interval;
-    if (isActive) {
+    if (isActive && loaded) {
       interval = setInterval(() => {
         displayIndex + 1 > images.length - 1
           ? setDisplayIndex((prev) => (prev = 0))
@@ -43,7 +42,7 @@ const Carousel = () => {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, displayIndex]);
+  }, [isActive, displayIndex, images]);
 
   const handleForward = () => {
     displayIndex + 1 > images.length - 1
@@ -58,57 +57,61 @@ const Carousel = () => {
 
   return (
     <div style={divStyle}>
-      {images.map((item, index) => (
-        <div
-          key={index}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            position: 'absolute',
-          }}
-        >
-          <img
-            id={index}
+      {loaded &&
+        images.map((item, index) => (
+          <div
+            key={index}
             style={{
-              maxHeight: '550px',
-              position: 'relative',
-              display:
-                displayIndex === index
-                  ? 'block'
-                  : setTimeout(() => 'none', 1000),
+              display: 'flex',
+              flexDirection: 'column',
+              position: 'absolute',
             }}
-            src={item}
-            className={`carousel-img ${
-              index === displayIndex ? 'fade-in' : 'fade-out'
-            }`}
-            onLoad={() => setLoaded(true)}
-          />
-          {loaded && displayIndex === index && (
-            <div style={{ zIndex: 3 }}>
-              <div style={arrowStyle}>
-                <IconButton onClick={handleBackward}>
-                  <NavigateBeforeIcon
-                    fontSize="large"
-                    sx={{ color: 'white' }}
-                  />
-                </IconButton>
-                <IconButton onClick={handleForward} sx={{ color: 'white' }}>
-                  <NavigateNextIcon fontSize="large" />
-                </IconButton>
+          >
+            <img
+              id={index}
+              style={{
+                maxHeight: '550px',
+                position: 'relative',
+                display:
+                  displayIndex === index
+                    ? 'block'
+                    : setTimeout(() => 'none', 1000),
+              }}
+              // onLoad={() => setLoaded(true)}
+              src={item}
+              className={`carousel-img ${
+                index === displayIndex ? 'fade-in' : 'fade-out'
+              }`}
+            />
+            {loaded && displayIndex === index && (
+              <div style={{ zIndex: 3 }}>
+                <div style={arrowStyle}>
+                  <IconButton onClick={handleBackward}>
+                    <NavigateBeforeIcon
+                      fontSize="large"
+                      sx={{ color: 'white' }}
+                    />
+                  </IconButton>
+                  <IconButton onClick={handleForward} sx={{ color: 'white' }}>
+                    <NavigateNextIcon fontSize="large" />
+                  </IconButton>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <IconButton onClick={() => setIsActive((prev) => !prev)}>
+                    {isActive ? (
+                      <PauseIcon fontSize="small" sx={{ color: '#adc3c6' }} />
+                    ) : (
+                      <PlayArrowIcon
+                        fontSize="small"
+                        sx={{ color: '#adc3c6' }}
+                      />
+                    )}
+                  </IconButton>
+                </div>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <IconButton onClick={() => setIsActive((prev) => !prev)}>
-                  {isActive ? (
-                    <PauseIcon fontSize="small" sx={{ color: '#adc3c6' }} />
-                  ) : (
-                    <PlayArrowIcon fontSize="small" sx={{ color: '#adc3c6' }} />
-                  )}
-                </IconButton>
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
+            )}
+          </div>
+        ))}
     </div>
   );
 };
