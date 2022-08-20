@@ -10,7 +10,6 @@ const Carousel = () => {
   const { images, loading } = useImgContext();
   const [displayIndex, setDisplayIndex] = useState(0);
   const [isActive, setIsActive] = useState(true);
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -38,15 +37,9 @@ const Carousel = () => {
       : setDisplayIndex((prev) => prev - 1);
   };
 
-  const divStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  };
-
   return (
     <div>
-      <div style={divStyle}>
+      <div className="div-style">
         <IconButton onClick={handleBackward}>
           <NavigateBeforeIcon />
         </IconButton>

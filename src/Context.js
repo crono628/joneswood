@@ -27,7 +27,7 @@ export const ImgContextProvider = ({ children }) => {
     };
     console.log('loaded');
 
-    return getImages;
+    getImages();
   }, []);
 
   const value = {
@@ -35,5 +35,9 @@ export const ImgContextProvider = ({ children }) => {
     loading,
   };
 
-  return <ImgContext.Provider value={value}>{children}</ImgContext.Provider>;
+  return (
+    <ImgContext.Provider value={value}>
+      {!loading && children}
+    </ImgContext.Provider>
+  );
 };
