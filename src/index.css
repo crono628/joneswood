@@ -113,6 +113,18 @@ html {
   gap: 1rem;
 }
 
+.lg-click {
+  display: block;
+  margin: 15px;
+  font-size: 0.8rem;
+}
+
+.sm-click {
+  display: none;
+  margin: 15px;
+  font-size: 0.6rem;
+}
+
 /* ===== Desktop view ===== */
 @media screen and (min-width: 601px) {
   .title-name {
@@ -172,6 +184,14 @@ html {
   }
   .carousel-container {
     width: 100%;
+  }
+
+  .lg-click {
+    display: none;
+  }
+
+  .sm-click {
+    display: block;
   }
 }
 

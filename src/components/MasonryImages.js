@@ -49,6 +49,8 @@ const MasonryImages = () => {
           ))}
         </ImageList>
       </Box>
+      <div className="sm-click">Touch to expand images</div>
+      <div className="lg-click">Click to expand images</div>
       <ImgModal value={modalControls} />
     </div>
   );
