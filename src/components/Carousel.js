@@ -10,6 +10,7 @@ const Carousel = () => {
   const { images, loading } = useImgContext();
   const [displayIndex, setDisplayIndex] = useState(0);
   const [isActive, setIsActive] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -37,31 +38,38 @@ const Carousel = () => {
       : setDisplayIndex((prev) => prev - 1);
   };
 
+  const divStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        flexDirection: 'column',
-      }}
-    >
-      <div className="carousel-container">
+    <div>
+      <div style={divStyle}>
         <IconButton onClick={handleBackward}>
           <NavigateBeforeIcon />
         </IconButton>
-        {!loading &&
-          images.map((image, index) => {
-            if (index === displayIndex) {
+        <div className="carousel-container">
+          {!loading &&
+            images.map((image, index) => {
               return (
                 <img
-                  className="carousel-img"
+                  className={`carousel-img ${
+                    index === displayIndex ? 'fade-in' : 'fade-out'
+                  }`}
                   src={image}
-                  alt="carousel"
                   key={index}
+                  style={{
+                    display:
+                      displayIndex === index
+                        ? 'block'
+                        : setTimeout(() => 'none', 750),
+                  }}
                 />
               );
-            }
-          })}
+            })}
+        </div>
         <IconButton onClick={handleForward}>
           <NavigateNextIcon />
         </IconButton>
@@ -73,63 +81,6 @@ const Carousel = () => {
       </div>
     </div>
   );
-
-  // return (
-  //   <div style={divStyle}>
-  //     {!loading &&
-  //       images.map((item, index) => (
-  //         <div
-  //           key={index}
-  //           style={{
-  //             display: 'flex',
-  //             flexDirection: 'column',
-  //             position: 'absolute',
-  //           }}
-  //         >
-  //           <img
-  //             id={index}
-  //             style={{
-  //               display:
-  //                 displayIndex === index
-  //                   ? 'block'
-  //                   : setTimeout(() => 'none', 1000),
-  //             }}
-  //             src={item}
-  //             className={`carousel-img ${
-  //               index === displayIndex ? 'fade-in' : 'fade-out'
-  //             }`}
-  //           />
-  //           {!loading && displayIndex === index && (
-  //             <div style={{ zIndex: 3 }}>
-  //               <div style={arrowStyle}>
-  //                 <IconButton onClick={handleBackward}>
-  //                   <NavigateBeforeIcon
-  //                     fontSize="large"
-  //                     sx={{ color: 'white' }}
-  //                   />
-  //                 </IconButton>
-  //                 <IconButton onClick={handleForward} sx={{ color: 'white' }}>
-  //                   <NavigateNextIcon fontSize="large" />
-  //                 </IconButton>
-  //               </div>
-  //               <div style={{ display: 'flex', justifyContent: 'center' }}>
-  //                 <IconButton onClick={() => setIsActive((prev) => !prev)}>
-  //                   {isActive ? (
-  //                     <PauseIcon fontSize="small" sx={{ color: '#adc3c6' }} />
-  //                   ) : (
-  //                     <PlayArrowIcon
-  //                       fontSize="small"
-  //                       sx={{ color: '#adc3c6' }}
-  //                     />
-  //                   )}
-  //                 </IconButton>
-  //               </div>
-  //             </div>
-  //           )}
-  //         </div>
-  //       ))}
-  //   </div>
-  // );
 };
 
 const divStyle = {
