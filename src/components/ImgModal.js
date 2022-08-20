@@ -13,6 +13,7 @@ const style = {
   borderRadius: '5px',
   boxShadow: 24,
   p: 4,
+  outline: 0,
 };
 
 function ImgModal({ value }) {
@@ -20,12 +21,15 @@ function ImgModal({ value }) {
   return (
     <div>
       <Modal
+        sx={{ bgcolor: 'rgba(0, 0, 0, 0.4)' }}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div>{src && <img style={style} src={src} />}</div>
+        <div style={{ outline: 0 }}>
+          {src && <img style={style} src={src} />}
+        </div>
       </Modal>
     </div>
   );
