@@ -1,13 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { getDownloadURL, listAll } from 'firebase/storage';
-import { compressedRef } from '../firebase';
+
 import { useImgContext } from '../Context';
+import ImgModal from './ImgModal';
 
 const MasonryImages = () => {
-  const { images, loading } = useImgContext();
+  const { images } = useImgContext();
+  const [src, setSrc] = useState(null);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+    setSrc(null);
+  };
+
+  const modalControls = {
+    src,
+    open,
+    handleOpen,
+    handleClose,
+  };
+
+  const handleClick = (e) => {
+    setSrc(images[e.target.dataset.index]);
+    handleOpen();
+  };
 
   return (
     <div className="masonry-width-container">
@@ -19,6 +38,9 @@ const MasonryImages = () => {
           {images.map((item, index) => (
             <ImageListItem key={item + index}>
               <img
+                onClick={handleClick}
+                style={{ zIndex: '1' }}
+                data-index={index}
                 src={`${item}?w=248&fit=crop&auto=format`}
                 srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 loading="lazy"
@@ -27,6 +49,7 @@ const MasonryImages = () => {
           ))}
         </ImageList>
       </Box>
+      <ImgModal value={modalControls} />
     </div>
   );
 };

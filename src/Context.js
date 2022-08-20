@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import { getDownloadURL, listAll } from 'firebase/storage';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { compressedRef } from './firebase';
@@ -19,7 +20,9 @@ export const ImgContextProvider = ({ children }) => {
         let mappedUrls = imageUrls.items.map((item) => getDownloadURL(item));
         Promise.all(mappedUrls).then((imgSrcArr) => {
           setImages(imgSrcArr);
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 1000);
         });
       } catch (error) {
         console.log(error);
@@ -37,7 +40,13 @@ export const ImgContextProvider = ({ children }) => {
 
   return (
     <ImgContext.Provider value={value}>
-      {!loading && children}
+      {loading ? (
+        <div className="div-style">
+          <CircularProgress />
+        </div>
+      ) : (
+        !loading && children
+      )}
     </ImgContext.Provider>
   );
 };
