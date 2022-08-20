@@ -6,14 +6,8 @@ import Carousel from './Carousel';
 const Home = () => {
   return (
     <div className="home-container">
-      <div className="splash-screen">
-        <p>Limited.</p>
-        <p>Artisanal.</p>
-        <p>Local.</p>
-      </div>
+      <div className="tagline">Limited. Artisanal. Local.</div>
       <Carousel />
-      {/* <MasonryImages /> */}
-
       <div className="blurb">
         <Typography maxWidth={'400px'} align={'center'}>
           All wood is sourced throughout Litchfield County, Connecticut. Hand

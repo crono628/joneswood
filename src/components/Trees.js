@@ -13,7 +13,7 @@ const Trees = () => {
     <div className="tree-container">
       {treeData.map((item) => {
         return (
-          <Accordion key={item.tree}>
+          <Accordion sx={{ backgroundColor: '#c6c6c6' }} key={item.tree}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"

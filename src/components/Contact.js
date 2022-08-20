@@ -4,7 +4,7 @@ import React from 'react';
 const Contact = () => {
   return (
     <div className="contact">
-      <Card elevation={12}>
+      <Card sx={{ backgroundColor: '#f9f9f9' }} elevation={12}>
         <CardContent>
           <Typography sx={{ fontSize: '1rem' }}>Contact Info</Typography>
         </CardContent>

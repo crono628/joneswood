@@ -38,63 +38,98 @@ const Carousel = () => {
   };
 
   return (
-    <div style={divStyle}>
-      {!loading &&
-        images.map((item, index) => (
-          <div
-            key={index}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              position: 'absolute',
-            }}
-          >
-            <img
-              id={index}
-              style={{
-                maxHeight: '550px',
-                position: 'relative',
-                display:
-                  displayIndex === index
-                    ? 'block'
-                    : setTimeout(() => 'none', 1000),
-              }}
-              src={item}
-              className={`carousel-img ${
-                index === displayIndex ? 'fade-in' : 'fade-out'
-              }`}
-            />
-            {!loading && displayIndex === index && (
-              <div style={{ zIndex: 3 }}>
-                <div style={arrowStyle}>
-                  <IconButton onClick={handleBackward}>
-                    <NavigateBeforeIcon
-                      fontSize="large"
-                      sx={{ color: 'white' }}
-                    />
-                  </IconButton>
-                  <IconButton onClick={handleForward} sx={{ color: 'white' }}>
-                    <NavigateNextIcon fontSize="large" />
-                  </IconButton>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <IconButton onClick={() => setIsActive((prev) => !prev)}>
-                    {isActive ? (
-                      <PauseIcon fontSize="small" sx={{ color: '#adc3c6' }} />
-                    ) : (
-                      <PlayArrowIcon
-                        fontSize="small"
-                        sx={{ color: '#adc3c6' }}
-                      />
-                    )}
-                  </IconButton>
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <div className="carousel-container">
+        <IconButton onClick={handleBackward}>
+          <NavigateBeforeIcon />
+        </IconButton>
+        {!loading &&
+          images.map((image, index) => {
+            if (index === displayIndex) {
+              return (
+                <img
+                  className="carousel-img"
+                  src={image}
+                  alt="carousel"
+                  key={index}
+                />
+              );
+            }
+          })}
+        <IconButton onClick={handleForward}>
+          <NavigateNextIcon />
+        </IconButton>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <IconButton onClick={() => setIsActive(!isActive)}>
+          {isActive ? <PauseIcon /> : <PlayArrowIcon />}
+        </IconButton>
+      </div>
     </div>
   );
+
+  // return (
+  //   <div style={divStyle}>
+  //     {!loading &&
+  //       images.map((item, index) => (
+  //         <div
+  //           key={index}
+  //           style={{
+  //             display: 'flex',
+  //             flexDirection: 'column',
+  //             position: 'absolute',
+  //           }}
+  //         >
+  //           <img
+  //             id={index}
+  //             style={{
+  //               display:
+  //                 displayIndex === index
+  //                   ? 'block'
+  //                   : setTimeout(() => 'none', 1000),
+  //             }}
+  //             src={item}
+  //             className={`carousel-img ${
+  //               index === displayIndex ? 'fade-in' : 'fade-out'
+  //             }`}
+  //           />
+  //           {!loading && displayIndex === index && (
+  //             <div style={{ zIndex: 3 }}>
+  //               <div style={arrowStyle}>
+  //                 <IconButton onClick={handleBackward}>
+  //                   <NavigateBeforeIcon
+  //                     fontSize="large"
+  //                     sx={{ color: 'white' }}
+  //                   />
+  //                 </IconButton>
+  //                 <IconButton onClick={handleForward} sx={{ color: 'white' }}>
+  //                   <NavigateNextIcon fontSize="large" />
+  //                 </IconButton>
+  //               </div>
+  //               <div style={{ display: 'flex', justifyContent: 'center' }}>
+  //                 <IconButton onClick={() => setIsActive((prev) => !prev)}>
+  //                   {isActive ? (
+  //                     <PauseIcon fontSize="small" sx={{ color: '#adc3c6' }} />
+  //                   ) : (
+  //                     <PlayArrowIcon
+  //                       fontSize="small"
+  //                       sx={{ color: '#adc3c6' }}
+  //                     />
+  //                   )}
+  //                 </IconButton>
+  //               </div>
+  //             </div>
+  //           )}
+  //         </div>
+  //       ))}
+  //   </div>
+  // );
 };
 
 const divStyle = {

@@ -25,6 +25,7 @@ export const ImgContextProvider = ({ children }) => {
         console.log(error);
       }
     };
+    console.log('loaded');
 
     return getImages;
   }, []);
