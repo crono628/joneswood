@@ -77,9 +77,9 @@ export default function HeaderMenu() {
       >
         <MenuItem onClick={handleNavigate}>Home</MenuItem>
         <MenuItem onClick={handleNavigate}>Gallery</MenuItem>
-        <MenuItem value="trees" onClick={handleNavigate}>
+        {/* <MenuItem value="trees" onClick={handleNavigate}>
           Trees
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem value="contact" onClick={handleNavigate}>
           Contact
         </MenuItem>

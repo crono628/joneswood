@@ -24,7 +24,7 @@ const Contact = () => {
               }}
             >
               <a
-                href="tel:+8609782548"
+                href="tel:+18609782548"
                 style={{
                   fontSize: '1rem',
                   textDecoration: 'none',
@@ -34,7 +34,7 @@ const Contact = () => {
                 Call
               </a>
               <a
-                href="sms:+8609782548"
+                href="sms:+18609782548"
                 style={{
                   fontSize: '1rem',
                   textDecoration: 'none',
